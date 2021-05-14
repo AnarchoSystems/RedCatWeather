@@ -1,2 +1,2 @@
 # RedCatWeather
-This repository showcases (using a mock) how API calls can be done in [RedCat](https://github.com/AnarchoSystems/RedCat.git). Several ways to set up the App's environment are shown as well.
+This repository showcases (using mock implementations) how API calls can be done and cached in [RedCat](https://github.com/AnarchoSystems/RedCat.git). Several ways to set up the App's environment - including different latencies for the APIs in debug builds - are shown as well.

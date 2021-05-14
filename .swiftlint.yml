@@ -1,0 +1,17 @@
+included:
+  - Actions
+  - Store
+  - ModelsAndReducers
+  - Views
+  - Services
+disabled_rules:
+  - colon
+  - vertical_whitespace
+  - trailing_whitespace
+  - statement_position
+  - trailing_comma
+  - nesting
+  - private_over_fileprivate
+  - closure_parameter_position
+opt_in_rules:
+  - cyclomatic_complexity

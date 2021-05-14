@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28C95174264DF8A600C89699 /* CityTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95173264DF8A600C89699 /* CityTextField.swift */; };
+		28C95176264E5D7D00C89699 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95175264E5D7D00C89699 /* Requestable.swift */; };
+		28C9518A264EAE6500C89699 /* HourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95189264EAE6500C89699 /* HourView.swift */; };
+		28C9518C264EAEBD00C89699 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9518B264EAEBD00C89699 /* DayView.swift */; };
+		28C9518E264EAF2000C89699 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9518D264EAF2000C89699 /* WeekView.swift */; };
+		28C95190264EB65C00C89699 /* RainRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9518F264EB65C00C89699 /* RainRange.swift */; };
+		28C95192264EB9A200C89699 /* WeatherColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95191264EB9A200C89699 /* WeatherColor.swift */; };
+		28C95194264ECAF100C89699 /* DebugDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95193264ECAF100C89699 /* DebugDelay.swift */; };
+		28C95196264ECEB200C89699 /* SlowInternetWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95195264ECEB200C89699 /* SlowInternetWarning.swift */; };
+		28C95198264EE23B00C89699 /* CityRequestResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95197264EE23B00C89699 /* CityRequestResolver.swift */; };
+		28CEFDC1264DA90700CED701 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CEFDC0264DA90700CED701 /* ForecastView.swift */; };
+		28CEFDC3264DA97C00CED701 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CEFDC2264DA97C00CED701 /* ActivityIndicator.swift */; };
+		28D52A46264D3A1D00D5FD7D /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D52A45264D3A1D00D5FD7D /* CityView.swift */; };
+		28D52A48264D3C2800D5FD7D /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D52A47264D3C2800D5FD7D /* BottomView.swift */; };
+		28D52A4A264D3C9400D5FD7D /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D52A49264D3C9400D5FD7D /* CityList.swift */; };
+		28D52A4C264D3DEC00D5FD7D /* PossibleCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D52A4B264D3DEC00D5FD7D /* PossibleCities.swift */; };
+		28E77AF4264C5F1600649429 /* RedCatWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77AF3264C5F1600649429 /* RedCatWeatherApp.swift */; };
+		28E77AF6264C5F1600649429 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77AF5264C5F1600649429 /* ContentView.swift */; };
+		28E77AF8264C5F1900649429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E77AF7264C5F1900649429 /* Assets.xcassets */; };
+		28E77AFB264C5F1900649429 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E77AFA264C5F1900649429 /* Preview Assets.xcassets */; };
+		28E77B08264C60B500649429 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B07264C60B500649429 /* Actions.swift */; };
+		28E77B0B264C60F700649429 /* RedCat in Frameworks */ = {isa = PBXBuildFile; productRef = 28E77B0A264C60F700649429 /* RedCat */; };
+		28E77B0D264C6F4D00649429 /* ForecastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B0C264C6F4D00649429 /* ForecastType.swift */; };
+		28E77B13264C8F7200649429 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B12264C8F7200649429 /* AppState.swift */; };
+		28E77B15264C911A00649429 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B14264C911A00649429 /* Forecast.swift */; };
+		28E77B19264C9C6000649429 /* CityRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B18264C9C6000649429 /* CityRequestHandler.swift */; };
+		28E77B1B264CACA800649429 /* ForecastRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B1A264CACA800649429 /* ForecastRequestHandler.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		28C95173264DF8A600C89699 /* CityTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTextField.swift; sourceTree = "<group>"; };
+		28C95175264E5D7D00C89699 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		28C95189264EAE6500C89699 /* HourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourView.swift; sourceTree = "<group>"; };
+		28C9518B264EAEBD00C89699 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		28C9518D264EAF2000C89699 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		28C9518F264EB65C00C89699 /* RainRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainRange.swift; sourceTree = "<group>"; };
+		28C95191264EB9A200C89699 /* WeatherColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherColor.swift; sourceTree = "<group>"; };
+		28C95193264ECAF100C89699 /* DebugDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugDelay.swift; sourceTree = "<group>"; };
+		28C95195264ECEB200C89699 /* SlowInternetWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowInternetWarning.swift; sourceTree = "<group>"; };
+		28C95197264EE23B00C89699 /* CityRequestResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRequestResolver.swift; sourceTree = "<group>"; };
+		28CEFDC0264DA90700CED701 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
+		28CEFDC2264DA97C00CED701 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		28D52A45264D3A1D00D5FD7D /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
+		28D52A47264D3C2800D5FD7D /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		28D52A49264D3C9400D5FD7D /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
+		28D52A4B264D3DEC00D5FD7D /* PossibleCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleCities.swift; sourceTree = "<group>"; };
+		28E77AF0264C5F1600649429 /* RedCatWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedCatWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28E77AF3264C5F1600649429 /* RedCatWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedCatWeatherApp.swift; sourceTree = "<group>"; };
+		28E77AF5264C5F1600649429 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28E77AF7264C5F1900649429 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28E77AFA264C5F1900649429 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		28E77AFC264C5F1900649429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E77B07264C60B500649429 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		28E77B0C264C6F4D00649429 /* ForecastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastType.swift; sourceTree = "<group>"; };
+		28E77B12264C8F7200649429 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		28E77B14264C911A00649429 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		28E77B18264C9C6000649429 /* CityRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRequestHandler.swift; sourceTree = "<group>"; };
+		28E77B1A264CACA800649429 /* ForecastRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRequestHandler.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28E77AED264C5F1600649429 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E77B0B264C60F700649429 /* RedCat in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28E77AE7264C5F1600649429 = {
+			isa = PBXGroup;
+			children = (
+				28E77B06264C60A500649429 /* Actions */,
+				28E77B05264C609A00649429 /* ModelsAndReducers */,
+				28E77B04264C608D00649429 /* Services */,
+				28E77B03264C608400649429 /* Views */,
+				28E77AF2264C5F1600649429 /* RedCatWeather */,
+				28E77AF1264C5F1600649429 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28E77AF1264C5F1600649429 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28E77AF0264C5F1600649429 /* RedCatWeather.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28E77AF2264C5F1600649429 /* RedCatWeather */ = {
+			isa = PBXGroup;
+			children = (
+				28E77AF3264C5F1600649429 /* RedCatWeatherApp.swift */,
+				28E77AF7264C5F1900649429 /* Assets.xcassets */,
+				28E77AFC264C5F1900649429 /* Info.plist */,
+				28E77AF9264C5F1900649429 /* Preview Content */,
+			);
+			path = RedCatWeather;
+			sourceTree = "<group>";
+		};
+		28E77AF9264C5F1900649429 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				28E77AFA264C5F1900649429 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		28E77B03264C608400649429 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28E77AF5264C5F1600649429 /* ContentView.swift */,
+				28D52A45264D3A1D00D5FD7D /* CityView.swift */,
+				28D52A47264D3C2800D5FD7D /* BottomView.swift */,
+				28D52A49264D3C9400D5FD7D /* CityList.swift */,
+				28CEFDC0264DA90700CED701 /* ForecastView.swift */,
+				28CEFDC2264DA97C00CED701 /* ActivityIndicator.swift */,
+				28C95173264DF8A600C89699 /* CityTextField.swift */,
+				28C95189264EAE6500C89699 /* HourView.swift */,
+				28C9518B264EAEBD00C89699 /* DayView.swift */,
+				28C9518D264EAF2000C89699 /* WeekView.swift */,
+				28C95191264EB9A200C89699 /* WeatherColor.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		28E77B04264C608D00649429 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				28E77B18264C9C6000649429 /* CityRequestHandler.swift */,
+				28E77B1A264CACA800649429 /* ForecastRequestHandler.swift */,
+				28C95193264ECAF100C89699 /* DebugDelay.swift */,
+				28C95195264ECEB200C89699 /* SlowInternetWarning.swift */,
+				28C95197264EE23B00C89699 /* CityRequestResolver.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		28E77B05264C609A00649429 /* ModelsAndReducers */ = {
+			isa = PBXGroup;
+			children = (
+				28E77B0C264C6F4D00649429 /* ForecastType.swift */,
+				28E77B12264C8F7200649429 /* AppState.swift */,
+				28E77B14264C911A00649429 /* Forecast.swift */,
+				28D52A4B264D3DEC00D5FD7D /* PossibleCities.swift */,
+				28C95175264E5D7D00C89699 /* Requestable.swift */,
+				28C9518F264EB65C00C89699 /* RainRange.swift */,
+			);
+			path = ModelsAndReducers;
+			sourceTree = "<group>";
+		};
+		28E77B06264C60A500649429 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				28E77B07264C60B500649429 /* Actions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28E77AEF264C5F1600649429 /* RedCatWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28E77AFF264C5F1900649429 /* Build configuration list for PBXNativeTarget "RedCatWeather" */;
+			buildPhases = (
+				28E77B02264C604700649429 /* ShellScript */,
+				28E77AEC264C5F1600649429 /* Sources */,
+				28E77AED264C5F1600649429 /* Frameworks */,
+				28E77AEE264C5F1600649429 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RedCatWeather;
+			packageProductDependencies = (
+				28E77B0A264C60F700649429 /* RedCat */,
+			);
+			productName = RedCatWeather;
+			productReference = 28E77AF0264C5F1600649429 /* RedCatWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28E77AE8264C5F1600649429 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					28E77AEF264C5F1600649429 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = 28E77AEB264C5F1600649429 /* Build configuration list for PBXProject "RedCatWeather" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28E77AE7264C5F1600649429;
+			packageReferences = (
+				28E77B09264C60F700649429 /* XCRemoteSwiftPackageReference "RedCat" */,
+			);
+			productRefGroup = 28E77AF1264C5F1600649429 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28E77AEF264C5F1600649429 /* RedCatWeather */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28E77AEE264C5F1600649429 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E77AFB264C5F1900649429 /* Preview Assets.xcassets in Resources */,
+				28E77AF8264C5F1900649429 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28E77B02264C604700649429 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28E77AEC264C5F1600649429 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28C95196264ECEB200C89699 /* SlowInternetWarning.swift in Sources */,
+				28C95174264DF8A600C89699 /* CityTextField.swift in Sources */,
+				28E77B08264C60B500649429 /* Actions.swift in Sources */,
+				28CEFDC3264DA97C00CED701 /* ActivityIndicator.swift in Sources */,
+				28D52A46264D3A1D00D5FD7D /* CityView.swift in Sources */,
+				28E77AF6264C5F1600649429 /* ContentView.swift in Sources */,
+				28D52A4C264D3DEC00D5FD7D /* PossibleCities.swift in Sources */,
+				28C9518E264EAF2000C89699 /* WeekView.swift in Sources */,
+				28C95192264EB9A200C89699 /* WeatherColor.swift in Sources */,
+				28E77B15264C911A00649429 /* Forecast.swift in Sources */,
+				28C9518A264EAE6500C89699 /* HourView.swift in Sources */,
+				28D52A48264D3C2800D5FD7D /* BottomView.swift in Sources */,
+				28C9518C264EAEBD00C89699 /* DayView.swift in Sources */,
+				28E77B19264C9C6000649429 /* CityRequestHandler.swift in Sources */,
+				28E77B0D264C6F4D00649429 /* ForecastType.swift in Sources */,
+				28E77B13264C8F7200649429 /* AppState.swift in Sources */,
+				28C95198264EE23B00C89699 /* CityRequestResolver.swift in Sources */,
+				28E77B1B264CACA800649429 /* ForecastRequestHandler.swift in Sources */,
+				28CEFDC1264DA90700CED701 /* ForecastView.swift in Sources */,
+				28D52A4A264D3C9400D5FD7D /* CityList.swift in Sources */,
+				28C95190264EB65C00C89699 /* RainRange.swift in Sources */,
+				28C95194264ECAF100C89699 /* DebugDelay.swift in Sources */,
+				28C95176264E5D7D00C89699 /* Requestable.swift in Sources */,
+				28E77AF4264C5F1600649429 /* RedCatWeatherApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		28E77AFD264C5F1900649429 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28E77AFE264C5F1900649429 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28E77B00264C5F1900649429 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RedCatWeather/Preview Content\"";
+				DEVELOPMENT_TEAM = 96PP669UPR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RedCatWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = orquidea.RedCatWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28E77B01264C5F1900649429 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RedCatWeather/Preview Content\"";
+				DEVELOPMENT_TEAM = 96PP669UPR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RedCatWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = orquidea.RedCatWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28E77AEB264C5F1600649429 /* Build configuration list for PBXProject "RedCatWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E77AFD264C5F1900649429 /* Debug */,
+				28E77AFE264C5F1900649429 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28E77AFF264C5F1900649429 /* Build configuration list for PBXNativeTarget "RedCatWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E77B00264C5F1900649429 /* Debug */,
+				28E77B01264C5F1900649429 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		28E77B09264C60F700649429 /* XCRemoteSwiftPackageReference "RedCat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AnarchoSystems/RedCat.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28E77B0A264C60F700649429 /* RedCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28E77B09264C60F700649429 /* XCRemoteSwiftPackageReference "RedCat" */;
+			productName = RedCat;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 28E77AE8264C5F1600649429 /* Project object */;
+}

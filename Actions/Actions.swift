@@ -11,12 +11,12 @@ import RedCat
 
 enum Actions {
     
-    struct ShowForecastForCity : Change {
+    struct ShowForecastForCity : PropertyChange {
         var oldValue : String
         var newValue : String
     }
     
-    struct ShowForecastType : Change {
+    struct ShowForecastType : PropertyChange {
         var oldValue : ForecastType
         var newValue : ForecastType
     }

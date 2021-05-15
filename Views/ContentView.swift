@@ -27,10 +27,10 @@ struct ContentView: View {
                 }
             }.ignoresSafeArea(.container, edges: .bottom)
         }.transition(.slide).animation(.linear)
-        .alert(isPresented: isErrorPresented) {
-            Alert(title: Text(store.state.error!.value.localizedDescription),
-                  message: Text(store.state.error!.value.localizedRecoverySuggestion ?? "Try crying."),
-                  dismissButton: .default(Text("Ok")))
+        .alert(item: errorBinding) {error in
+            Alert(title: Text(error.value.localizedDescription),
+                  message: Text(error.value.localizedRecoverySuggestion ?? "Try crying."),
+                  dismissButton: .default(Text("Ok"), action: dismissError))
         }
     }
     
@@ -42,14 +42,13 @@ struct ContentView: View {
         BottomView()
     }
     
-    var isErrorPresented : Binding<Bool> {
-        Binding(get: {store.state.error != nil},
-                set: {if !$0 {store.send(Actions.DismissError())}})
-    }
-    
     var errorBinding : Binding<Identified<UUID, NSError>?> {
         Binding(get: {store.state.error},
-                set: {if $0 == nil {store.send(Actions.DismissError())}})
+                set: {_ in })
+    }
+    
+    func dismissError() {
+        store.send(Actions.DismissError())
     }
     
     @ViewBuilder

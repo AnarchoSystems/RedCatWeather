@@ -17,6 +17,7 @@
 		28C95194264ECAF100C89699 /* DebugDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95193264ECAF100C89699 /* DebugDelay.swift */; };
 		28C95196264ECEB200C89699 /* SlowInternetWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95195264ECEB200C89699 /* SlowInternetWarning.swift */; };
 		28C95198264EE23B00C89699 /* CityRequestResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95197264EE23B00C89699 /* CityRequestResolver.swift */; };
+		28C951A0264F54CC00C89699 /* AppState+makeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9519F264F54CC00C89699 /* AppState+makeStore.swift */; };
 		28CEFDC1264DA90700CED701 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CEFDC0264DA90700CED701 /* ForecastView.swift */; };
 		28CEFDC3264DA97C00CED701 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CEFDC2264DA97C00CED701 /* ActivityIndicator.swift */; };
 		28D52A46264D3A1D00D5FD7D /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D52A45264D3A1D00D5FD7D /* CityView.swift */; };
@@ -47,6 +48,7 @@
 		28C95193264ECAF100C89699 /* DebugDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugDelay.swift; sourceTree = "<group>"; };
 		28C95195264ECEB200C89699 /* SlowInternetWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowInternetWarning.swift; sourceTree = "<group>"; };
 		28C95197264EE23B00C89699 /* CityRequestResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRequestResolver.swift; sourceTree = "<group>"; };
+		28C9519F264F54CC00C89699 /* AppState+makeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+makeStore.swift"; sourceTree = "<group>"; };
 		28CEFDC0264DA90700CED701 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		28CEFDC2264DA97C00CED701 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		28D52A45264D3A1D00D5FD7D /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				28C95193264ECAF100C89699 /* DebugDelay.swift */,
 				28C95195264ECEB200C89699 /* SlowInternetWarning.swift */,
 				28C95197264EE23B00C89699 /* CityRequestResolver.swift */,
+				28C9519F264F54CC00C89699 /* AppState+makeStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				28C9518C264EAEBD00C89699 /* DayView.swift in Sources */,
 				28E77B19264C9C6000649429 /* CityRequestHandler.swift in Sources */,
 				28E77B0D264C6F4D00649429 /* ForecastType.swift in Sources */,
+				28C951A0264F54CC00C89699 /* AppState+makeStore.swift in Sources */,
 				28E77B13264C8F7200649429 /* AppState.swift in Sources */,
 				28C95198264EE23B00C89699 /* CityRequestResolver.swift in Sources */,
 				28E77B1B264CACA800649429 /* ForecastRequestHandler.swift in Sources */,

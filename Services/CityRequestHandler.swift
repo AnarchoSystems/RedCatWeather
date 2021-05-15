@@ -12,7 +12,7 @@ import RedCat
 enum CityRequestHandler : Config {
     static func value(given: Dependencies) -> CityRequestResolver {
         if given.debug {
-            return MockCityResolver(delay: given.debugDelay)
+            return MockCityResolver(delay: given.debugDelay).cached()
         }
         else {
             fatalError("Not implemented")

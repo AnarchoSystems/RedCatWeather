@@ -44,37 +44,6 @@ public struct AppState {
         }
     }
     
-    static func makeStore(configure: (Dependencies) -> AppState = configureDefaultState) -> CombineStore<AppState> {
-        Store.combineStore(reducer: reducer,
-                           environment: Dependencies {
-                            Bind(\.debugDelay, to: .short)
-                            Bind(given: \.cityRequestHandler) {Bind(\.cityRequestHandler,
-                                                                    to: $0.cached())
-                            }
-                           },
-                           services: [CityRequestService(detail: \.possibleCities),
-                                      ForecastRequestService(detail: \.currentForecast)],
-                           configure: configure)
-    }
-    
-    static func makeStore(configure: (inout AppState) -> Void) -> CombineStore<AppState> {
-        makeStore {(env : Dependencies) in
-            var state = configureDefaultState(env)
-            configure(&state)
-            return state
-        }
-    }
-    
-    static func configureDefaultState(_ env: Dependencies) -> AppState {
-        AppState(error: nil,
-                 currentForecast: Forecast(city: "",
-                                           rawForecastType: .day,
-                                           requestState: .empty),
-                 possibleCities: PossibleCities(prefix: "",
-                                                requestState: .empty),
-                 currentMenu: .forecast)
-    }
-    
     static let reducer = AppReducer()
     
     struct AppReducer : ReducerWrapper {

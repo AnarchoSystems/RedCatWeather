@@ -56,13 +56,13 @@ class ForecastRequestService : DetailService<AppState, Forecast> {
                     value == newValue else {
                     return
                 }
-                store.send(Actions.RespondWithForecast(city: value.city, payload: response))
+                store.send(Actions.Forecast.RespondWithForecast(city: value.city, payload: response))
             }
             
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {[weak store] in
             guard !answered else {return}
-            store?.send(Actions.SetError(error: environment.slowInternetWarning.makeNSError()))
+            store?.send(Actions.Error.SetError(error: environment.slowInternetWarning.makeNSError()))
         }
     }
     

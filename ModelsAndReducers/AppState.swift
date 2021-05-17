@@ -59,17 +59,17 @@ public struct AppState {
     }
     
     static let goToCitiesMenuReducer = Reducer {
-        (_: Actions.GetPossibleCitiesCount, state: inout AppState) in
+        (_: Actions.PossibleCities.GetPossibleCitiesCount, state: inout AppState) in
         state.currentMenu = .cities
     }
     
     static let dismissCityRequestOnShowCity = Reducer {
-        (_: Actions.ShowForecastForCity, state: inout AppState) in
+        (_: Actions.Forecast.ShowForecastForCity, state: inout AppState) in
         state.currentMenu = .forecast
     }
     
     static let initReducer = Reducer {
-        (_: AppInit, state: inout AppState) in
+        (_: Actions.AppInit, state: inout AppState) in
         state.currentForecast.city = state.defaultCity
         state.currentForecast.requestState = .requested(request: state.currentForecast.rawForecastType)
     }
@@ -77,7 +77,7 @@ public struct AppState {
     static let errorReducer = ErrorReducer()
     
     static let deinitReducer = Reducer {
-        (_: AppDeinit, state: inout AppState) in
+        (_: Actions.AppDeinit, state: inout AppState) in
         state.defaultCity = state.currentForecast.city
     }
     
@@ -89,7 +89,7 @@ public struct AppState {
             .compose(with: dismiss, property: \.error)
         
         let setError = Reducer {
-            (action: Actions.SetError, state: inout AppState, environment) in
+            (action: Actions.Error.SetError, state: inout AppState, environment) in
             guard state.error == nil else {return}
             if action.error.localizedRecoverySuggestion == environment.slowInternetWarning.hint {
                 if !state.hasShownSlowInternetError {
@@ -103,7 +103,7 @@ public struct AppState {
         }
         
         let dismiss = Reducer {
-            (_: Actions.DismissError, state: inout Identified<UUID, NSError>?) in
+            (_: Actions.Error.DismissError, state: inout Identified<UUID, NSError>?) in
             state = nil
         }
         

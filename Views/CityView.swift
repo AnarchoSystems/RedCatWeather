@@ -14,6 +14,8 @@ struct CityView : View {
     
     @EnvironmentObject var store : CombineStore<AppState>
     
+    typealias Actions = RedCat.Actions.PossibleCities
+    
     @ViewBuilder
     var body: some View {
         switch store.state.currentMenu {

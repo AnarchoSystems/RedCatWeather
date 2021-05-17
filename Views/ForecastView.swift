@@ -101,7 +101,7 @@ struct ForecastView : View {
     }
     
     func showForecast(_ newValue: ForecastType) {
-        store.send(Actions.ShowForecastType(oldValue: selected,
+        store.send(Actions.Forecast.ShowForecastType(oldValue: selected,
                                             newValue: newValue))
     }
     

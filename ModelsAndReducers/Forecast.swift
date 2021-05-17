@@ -27,6 +27,8 @@ extension Forecast {
     
     static let reducer = ForecastReducer()
     
+    typealias Actions = RedCat.Actions.Forecast
+    
     struct ForecastReducer : ReducerWrapper {
         
         let body = forecastResponseReducer

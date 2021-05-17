@@ -9,45 +9,59 @@ import Foundation
 import RedCat
 
 
-enum Actions {
+extension Actions {
     
-    struct ShowForecastForCity : PropertyChange {
-        var oldValue : String
-        var newValue : String
+    enum Forecast {
+        
+        struct ShowForecastForCity : PropertyChange {
+            var oldValue : String
+            var newValue : String
+        }
+        
+        struct ShowForecastType : PropertyChange {
+            var oldValue : ForecastType
+            var newValue : ForecastType
+        }
+        
+        struct RespondWithForecast : ActionProtocol {
+            let city : String
+            let payload : Result<ResolvedForecast, NSError>
+        }
+        
     }
     
-    struct ShowForecastType : PropertyChange {
-        var oldValue : ForecastType
-        var newValue : ForecastType
+    enum PossibleCities {
+        
+        typealias ShowForecastForCity = Forecast.ShowForecastForCity
+        
+        struct GetPossibleCitiesCount : ActionProtocol, Equatable {
+            let prefix : String
+        }
+        
+        struct GetPossibleCities : ActionProtocol, Equatable {
+            let requestedIndex : Int
+        }
+        
+        struct SetPossibleCitiesCount : ActionProtocol {
+            let prefix : String
+            let count : Result<Int, NSError>
+        }
+        
+        struct SetPossibleCities : ActionProtocol {
+            let prefix : String
+            let values : [(index: Int, name: Result<String, NSError>)]
+        }
+        
     }
     
-    struct GetPossibleCitiesCount : ActionProtocol, Equatable {
-        let prefix : String
+    enum Error {
+        
+        struct SetError : ActionProtocol {
+            let error : NSError
+        }
+        
+        struct DismissError : ActionProtocol {}
+        
     }
-    
-    struct GetPossibleCities : ActionProtocol, Equatable {
-        let requestedIndex : Int
-    }
-    
-    struct SetPossibleCitiesCount : ActionProtocol {
-        let prefix : String 
-        let count : Result<Int, NSError>
-    }
-    
-    struct SetPossibleCities : ActionProtocol {
-        let prefix : String
-        let values : [(index: Int, name: Result<String, NSError>)]
-    }
-    
-    struct RespondWithForecast : ActionProtocol {
-        let city : String
-        let payload : Result<ResolvedForecast, NSError>
-    }
-    
-    struct SetError : ActionProtocol {
-        let error : NSError
-    }
-    
-    struct DismissError : ActionProtocol {}
     
 }

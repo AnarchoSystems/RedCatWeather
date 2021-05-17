@@ -12,6 +12,8 @@ import RedCat
 
 struct CityTextField: UIViewRepresentable {
     
+    typealias Actions = RedCat.Actions.PossibleCities
+    
     @EnvironmentObject var store : CombineStore<AppState>
     
     func makeUIView(context: Context) -> UITextField {

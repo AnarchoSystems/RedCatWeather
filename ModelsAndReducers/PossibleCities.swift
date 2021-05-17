@@ -42,6 +42,8 @@ struct PossibleCities : Equatable {
         return []
     }
     
+    typealias Actions = RedCat.Actions.PossibleCities
+    
     static let reducer = CitiesReducer()
     
     struct CitiesReducer : ReducerWrapper {

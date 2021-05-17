@@ -48,7 +48,7 @@ struct ContentView: View {
     }
     
     func dismissError() {
-        store.send(Actions.DismissError())
+        store.send(Actions.Error.DismissError())
     }
     
     @ViewBuilder

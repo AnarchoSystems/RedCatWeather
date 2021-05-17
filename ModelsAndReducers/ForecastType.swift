@@ -15,6 +15,8 @@ enum ForecastType {
     case day
     case week
     
+    typealias Actions = RedCat.Actions.Forecast
+    
     static let reducer = Reducer()
     
     struct Reducer : ReducerProtocol {

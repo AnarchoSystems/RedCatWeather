@@ -12,6 +12,8 @@ import RedCat
 
 struct CityList : View {
     
+    typealias Actions = RedCat.Actions.PossibleCities
+    
     @EnvironmentObject var store : CombineStore<AppState>
     
     var possibleCities : PossibleCities {

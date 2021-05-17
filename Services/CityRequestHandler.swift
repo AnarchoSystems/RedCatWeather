@@ -65,7 +65,7 @@ class CityRequestService : DetailService<AppState, PossibleCities> {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {[weak store] in
             guard !answered else {return}
-            store?.send(Actions.SetError(error: environment.slowInternetWarning.makeNSError()))
+            store?.send(Actions.Error.SetError(error: environment.slowInternetWarning.makeNSError()))
         }
         
     }
@@ -78,7 +78,8 @@ class CityRequestService : DetailService<AppState, PossibleCities> {
         
         handler.getPossibleCities(withPrefix: prefix, indices: indices) {[weak store] response in
             DispatchQueue.main.async {
-                store?.send(Actions.SetPossibleCities(prefix: prefix, values: Array(zip(indices, response))))
+                store?.send(Actions.PossibleCities.SetPossibleCities(prefix: prefix,
+                                                                     values: Array(zip(indices, response))))
                 then()
             }
         }
@@ -98,7 +99,7 @@ class CityRequestService : DetailService<AppState, PossibleCities> {
                     return
                 }
                 let currentValue = detail(store.state)
-                store.send(Actions.SetPossibleCitiesCount(prefix: prefix, count: response))
+                store.send(Actions.PossibleCities.SetPossibleCitiesCount(prefix: prefix, count: response))
                 guard case .success = response else {
                     return
                 }

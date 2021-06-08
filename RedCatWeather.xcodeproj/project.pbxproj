@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2812DE92266EF71F00F476AF /* RedCat in Frameworks */ = {isa = PBXBuildFile; productRef = 2812DE91266EF71F00F476AF /* RedCat */; };
 		28C95174264DF8A600C89699 /* CityTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95173264DF8A600C89699 /* CityTextField.swift */; };
 		28C95176264E5D7D00C89699 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95175264E5D7D00C89699 /* Requestable.swift */; };
 		28C9518A264EAE6500C89699 /* HourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95189264EAE6500C89699 /* HourView.swift */; };
@@ -29,7 +30,6 @@
 		28E77AF8264C5F1900649429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E77AF7264C5F1900649429 /* Assets.xcassets */; };
 		28E77AFB264C5F1900649429 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E77AFA264C5F1900649429 /* Preview Assets.xcassets */; };
 		28E77B08264C60B500649429 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B07264C60B500649429 /* Actions.swift */; };
-		28E77B0B264C60F700649429 /* RedCat in Frameworks */ = {isa = PBXBuildFile; productRef = 28E77B0A264C60F700649429 /* RedCat */; };
 		28E77B0D264C6F4D00649429 /* ForecastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B0C264C6F4D00649429 /* ForecastType.swift */; };
 		28E77B13264C8F7200649429 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B12264C8F7200649429 /* AppState.swift */; };
 		28E77B15264C911A00649429 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E77B14264C911A00649429 /* Forecast.swift */; };
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28E77B0B264C60F700649429 /* RedCat in Frameworks */,
+				2812DE92266EF71F00F476AF /* RedCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +190,7 @@
 			);
 			name = RedCatWeather;
 			packageProductDependencies = (
-				28E77B0A264C60F700649429 /* RedCat */,
+				2812DE91266EF71F00F476AF /* RedCat */,
 			);
 			productName = RedCatWeather;
 			productReference = 28E77AF0264C5F1600649429 /* RedCatWeather.app */;
@@ -220,7 +220,7 @@
 			);
 			mainGroup = 28E77AE7264C5F1600649429;
 			packageReferences = (
-				28E77B09264C60F700649429 /* XCRemoteSwiftPackageReference "RedCat" */,
+				2812DE90266EF71F00F476AF /* XCRemoteSwiftPackageReference "RedCat" */,
 			);
 			productRefGroup = 28E77AF1264C5F1600649429 /* Products */;
 			projectDirPath = "";
@@ -483,20 +483,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		28E77B09264C60F700649429 /* XCRemoteSwiftPackageReference "RedCat" */ = {
+		2812DE90266EF71F00F476AF /* XCRemoteSwiftPackageReference "RedCat" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AnarchoSystems/RedCat.git";
+			repositoryURL = "https://github.com/AnarchoSystems/RedCat";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		28E77B0A264C60F700649429 /* RedCat */ = {
+		2812DE91266EF71F00F476AF /* RedCat */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28E77B09264C60F700649429 /* XCRemoteSwiftPackageReference "RedCat" */;
+			package = 2812DE90266EF71F00F476AF /* XCRemoteSwiftPackageReference "RedCat" */;
 			productName = RedCat;
 		};
 /* End XCSwiftPackageProductDependency section */

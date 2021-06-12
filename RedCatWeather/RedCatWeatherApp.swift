@@ -24,7 +24,7 @@ struct RedCatWeatherApp: App {
 
 class AppDelegate : NSObject, UIApplicationDelegate {
     
-    let store : CombineStore<AppState> = AppState.makeStore()
+    let store : CombineStore<AppState, AppAction> = AppState.makeStore()
     
     func applicationWillTerminate(_ application: UIApplication) {
         store.shutDown()

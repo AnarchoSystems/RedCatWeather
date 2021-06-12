@@ -12,7 +12,7 @@ import RedCat
 
 struct ForecastView : View {
     
-    @EnvironmentObject var store : CombineStore<AppState>
+    @EnvironmentObject var store : CombineStore<AppState, AppAction>
     
     var body : some View {
         embed(dispatchView)
@@ -101,8 +101,8 @@ struct ForecastView : View {
     }
     
     func showForecast(_ newValue: ForecastType) {
-        store.send(Actions.Forecast.ShowForecastType(oldValue: selected,
-                                            newValue: newValue))
+        store.send(.forecast(action: .showForecastType(oldValue: selected,
+                                            newValue: newValue)))
     }
     
     var selected : ForecastType {

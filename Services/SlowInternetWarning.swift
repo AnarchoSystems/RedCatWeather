@@ -11,7 +11,7 @@ import RedCat
 
 enum SlowInternetWarnDescription : Config {
     static func value(given: Dependencies) -> SlowInternetWarning {
-        if given.debug {
+        if given.nativeValues.debug {
             return SlowInternetWarning(hint: "Change debugDelay in AppState.makeStore()")
         }
         else {

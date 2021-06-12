@@ -12,7 +12,7 @@ import RedCat
 
 struct BottomView : View {
     
-    @EnvironmentObject var store : CombineStore<AppState>
+    @EnvironmentObject var store : CombineStore<AppState, AppAction>
     
     var body : some View {
         dispatchView

@@ -5,6 +5,7 @@
 //  Created by Markus Pfeifer on 13.05.21.
 //
 
+import Foundation
 import RedCat
 
 
@@ -27,35 +28,37 @@ extension Forecast {
     
     static let reducer = ForecastReducer()
     
-    typealias Actions = RedCat.Actions.Forecast
-    
-    struct ForecastReducer : ReducerWrapper {
+    struct ForecastReducer : ReducerProtocol {
         
-        let body = forecastResponseReducer
-            .compose(with: showCityReducer)
-            .compose(with: showForecastReducer)
-        
-    }
-    
-    static let forecastResponseReducer = Reducer {
-        (action: Actions.RespondWithForecast, state: inout Forecast) in
-        guard state.city == action.city else {return}
-        state.requestState.finalize(from: action.payload)
-        if case .resolved(let response) = state.requestState {
-            state.lastResult = response
+        func apply(_ action: AppAction.Forecast,
+                   to state: inout Forecast) {
+            switch action {
+            case .showForecastType(oldValue: _, newValue: let newValue):
+                showForecastType(newValue: newValue, in: &state)
+            case .respondWithForecast(city: let city, payload: let payload):
+                respondWithForecast(city: city, payload: payload, in: &state)
+            case .showForecastForCity(oldValue: _, newValue: let newValue):
+                showForecastForCity(newValue: newValue, in: &state)
+            }
         }
-    }
-    
-    static let showCityReducer = Reducer {
-        (action: Actions.ShowForecastForCity, state: inout Forecast) in
-        state.city = action.newValue
-        state.requestState = .requested(request: state.rawForecastType)
-    }
-    
-    static let showForecastReducer = Reducer {
-        (action: Actions.ShowForecastType, state: inout Forecast) in
-        state.rawForecastType = action.newValue
-        state.requestState = .requested(request: action.newValue)
+        
+        func respondWithForecast(city: String, payload: Result<ResolvedForecast, NSError>, in state: inout Forecast) {
+            state.requestState.finalize(from: payload)
+            if case .resolved(let response) = state.requestState {
+                state.lastResult = response
+            }
+        }
+        
+        func showForecastType(newValue: ForecastType, in state: inout Forecast) {
+            state.rawForecastType = newValue
+            state.requestState = .requested(request: newValue)
+        }
+        
+        func showForecastForCity(newValue: String, in state: inout Forecast) {
+            state.city = newValue
+            state.requestState = .requested(request: state.rawForecastType)
+        }
+        
     }
     
 }

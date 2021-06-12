@@ -12,9 +12,7 @@ import RedCat
 
 struct CityView : View {
     
-    @EnvironmentObject var store : CombineStore<AppState>
-    
-    typealias Actions = RedCat.Actions.PossibleCities
+    @EnvironmentObject var store : CombineStore<AppState, AppAction>
     
     @ViewBuilder
     var body: some View {
@@ -53,7 +51,7 @@ struct CityView : View {
     }
     
     func startCityBrowsing() {
-        store.send(Actions.GetPossibleCitiesCount(prefix: store.state.currentForecast.city))
+        store.send(.possibleCities(action: .getPossibleCitiesCount(prefix: store.state.currentForecast.city)))
     }
     
 }

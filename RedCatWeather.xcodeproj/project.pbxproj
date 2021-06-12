@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2812DE92266EF71F00F476AF /* RedCat in Frameworks */ = {isa = PBXBuildFile; productRef = 2812DE91266EF71F00F476AF /* RedCat */; };
+		2812DE95266FFA5800F476AF /* AnOx in Frameworks */ = {isa = PBXBuildFile; productRef = 2812DE94266FFA5800F476AF /* AnOx */; };
+		28A5FE34267433AE00A42A3E /* AppEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5FE33267433AE00A42A3E /* AppEventService.swift */; };
 		28C95174264DF8A600C89699 /* CityTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95173264DF8A600C89699 /* CityTextField.swift */; };
 		28C95176264E5D7D00C89699 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95175264E5D7D00C89699 /* Requestable.swift */; };
 		28C9518A264EAE6500C89699 /* HourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C95189264EAE6500C89699 /* HourView.swift */; };
@@ -38,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28A5FE33267433AE00A42A3E /* AppEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEventService.swift; sourceTree = "<group>"; };
 		28C95173264DF8A600C89699 /* CityTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTextField.swift; sourceTree = "<group>"; };
 		28C95175264E5D7D00C89699 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		28C95189264EAE6500C89699 /* HourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourView.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2812DE95266FFA5800F476AF /* AnOx in Frameworks */,
 				2812DE92266EF71F00F476AF /* RedCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +85,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2812DE93266FFA5800F476AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		28E77AE7264C5F1600649429 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +101,7 @@
 				28E77B03264C608400649429 /* Views */,
 				28E77AF2264C5F1600649429 /* RedCatWeather */,
 				28E77AF1264C5F1600649429 /* Products */,
+				2812DE93266FFA5800F476AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +159,7 @@
 				28C95195264ECEB200C89699 /* SlowInternetWarning.swift */,
 				28C95197264EE23B00C89699 /* CityRequestResolver.swift */,
 				28C9519F264F54CC00C89699 /* AppState+makeStore.swift */,
+				28A5FE33267433AE00A42A3E /* AppEventService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,6 +204,7 @@
 			name = RedCatWeather;
 			packageProductDependencies = (
 				2812DE91266EF71F00F476AF /* RedCat */,
+				2812DE94266FFA5800F476AF /* AnOx */,
 			);
 			productName = RedCatWeather;
 			productReference = 28E77AF0264C5F1600649429 /* RedCatWeather.app */;
@@ -292,6 +306,7 @@
 				28C95190264EB65C00C89699 /* RainRange.swift in Sources */,
 				28C95194264ECAF100C89699 /* DebugDelay.swift in Sources */,
 				28C95176264E5D7D00C89699 /* Requestable.swift in Sources */,
+				28A5FE34267433AE00A42A3E /* AppEventService.swift in Sources */,
 				28E77AF4264C5F1600649429 /* RedCatWeatherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,7 +503,7 @@
 			repositoryURL = "https://github.com/AnarchoSystems/RedCat";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.1;
+				minimumVersion = 0.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -498,6 +513,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2812DE90266EF71F00F476AF /* XCRemoteSwiftPackageReference "RedCat" */;
 			productName = RedCat;
+		};
+		2812DE94266FFA5800F476AF /* AnOx */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2812DE90266EF71F00F476AF /* XCRemoteSwiftPackageReference "RedCat" */;
+			productName = AnOx;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

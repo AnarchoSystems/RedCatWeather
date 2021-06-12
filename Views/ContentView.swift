@@ -11,7 +11,7 @@ import RedCat
 
 struct ContentView: View {
     
-    @EnvironmentObject var store : CombineStore<AppState>
+    @EnvironmentObject var store : CombineStore<AppState, AppAction>
     
     var body: some View {
         ZStack {
@@ -48,7 +48,7 @@ struct ContentView: View {
     }
     
     func dismissError() {
-        store.send(Actions.Error.DismissError())
+        store.send(.error(action: .dismissError))
     }
     
     @ViewBuilder

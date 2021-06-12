@@ -11,7 +11,7 @@ import RedCat
 
 enum CityRequestHandler : Config {
     static func value(given: Dependencies) -> CityRequestResolver {
-        if given.debug {
+        if given.nativeValues.debug {
             return MockCityResolver(delay: given.debugDelay).cached()
         }
         else {
@@ -34,9 +34,9 @@ extension Dependencies {
 }
 
 
-class CityRequestService : DetailService<AppState, PossibleCities> {
+class CityRequestService : DetailService<AppState, PossibleCities, AppAction> {
     
-    override func onUpdate(newValue: PossibleCities, store: Store<AppState>, environment: Dependencies) {
+    override func onUpdate(newValue: PossibleCities, store: Store<AppState, AppAction>, environment: Dependencies) {
         
         var answered = false
         
@@ -65,21 +65,22 @@ class CityRequestService : DetailService<AppState, PossibleCities> {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {[weak store] in
             guard !answered else {return}
-            store?.send(Actions.Error.SetError(error: environment.slowInternetWarning.makeNSError()))
+            store?.send(.error(action: .setError(error: environment.slowInternetWarning.makeNSError(),
+                                                 isSlowInternetError: true)))
         }
         
     }
     
     private func requestCities(_ indices: [Int],
                                prefix: String,
-                               store: Store<AppState>,
+                               store: Store<AppState, AppAction>,
                                handler: CityRequestResolver,
                                then: @escaping () -> Void) {
         
         handler.getPossibleCities(withPrefix: prefix, indices: indices) {[weak store] response in
             DispatchQueue.main.async {
-                store?.send(Actions.PossibleCities.SetPossibleCities(prefix: prefix,
-                                                                     values: Array(zip(indices, response))))
+                store?.send(.possibleCities(action: .setPossibleCities(prefix: prefix,
+                                                                     values: Array(zip(indices, response)))))
                 then()
             }
         }
@@ -87,7 +88,7 @@ class CityRequestService : DetailService<AppState, PossibleCities> {
     }
     
     private func requestCityCount(prefix: String,
-                                  store: Store<AppState>,
+                                  store: Store<AppState, AppAction>,
                                   handler: CityRequestResolver,
                                   then: @escaping () -> Void) {
         
@@ -99,7 +100,7 @@ class CityRequestService : DetailService<AppState, PossibleCities> {
                     return
                 }
                 let currentValue = detail(store.state)
-                store.send(Actions.PossibleCities.SetPossibleCitiesCount(prefix: prefix, count: response))
+                store.send(.possibleCities(action: .setPossibleCitiesCount(prefix: prefix, count: response)))
                 guard case .success = response else {
                     return
                 }

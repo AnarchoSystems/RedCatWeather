@@ -12,9 +12,7 @@ import RedCat
 
 struct CityTextField: UIViewRepresentable {
     
-    typealias Actions = RedCat.Actions.PossibleCities
-    
-    @EnvironmentObject var store : CombineStore<AppState>
+    @EnvironmentObject var store : CombineStore<AppState, AppAction>
     
     func makeUIView(context: Context) -> UITextField {
         let view = UITextField()
@@ -42,15 +40,15 @@ struct CityTextField: UIViewRepresentable {
     
     class Coordinator {
         
-        let store : CombineStore<AppState>
+        let store : CombineStore<AppState, AppAction>
         
-        init(store: CombineStore<AppState>) {
+        init(store: CombineStore<AppState, AppAction>) {
             self.store = store
         }
         
         @objc
         func textDidChange(_ textField: UITextField) {
-            store.send(Actions.GetPossibleCitiesCount(prefix: textField.text ?? ""))
+            store.send(.possibleCities(action:.getPossibleCitiesCount(prefix: textField.text ?? "")))
         }
         
         @objc
@@ -59,7 +57,7 @@ struct CityTextField: UIViewRepresentable {
             guard let inferred = store.state.possibleCities.infer() else {
                 return
             }
-            store.send(Actions.ShowForecastForCity(oldValue: store.state.currentForecast.city,
+            store.send(AppAction.showForecastForCity(oldValue: store.state.currentForecast.city,
                                         newValue: inferred))
         }
         

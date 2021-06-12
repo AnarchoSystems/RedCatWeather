@@ -11,16 +11,18 @@ import RedCat
 
 extension AppState {
     
-    static func makeStore(configure: (Dependencies) -> AppState = configureDefaultState) -> CombineStore<AppState> {
+    static func makeStore(configure: (Dependencies) -> AppState = configureDefaultState)
+    -> CombineStore<AppState, AppAction> {
         Store.combineStore(reducer: reducer,
                            environment: dependencies,
                            services: [CityRequestService(detail: \.possibleCities),
-                                      ForecastRequestService(detail: \.currentForecast)],
+                                      ForecastRequestService(detail: \.currentForecast),
+                                      AppEventService()],
                            configure: configure)
     }
     
     // for previews / debug
-    static func makeStore(configure: (inout AppState) -> Void) -> CombineStore<AppState> {
+    static func makeStore(configure: (inout AppState) -> Void) -> CombineStore<AppState, AppAction> {
         makeStore {(env : Dependencies) in
             var state = configureDefaultState(env)
             configure(&state)

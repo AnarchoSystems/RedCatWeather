@@ -42,71 +42,78 @@ struct PossibleCities : Equatable {
         return []
     }
     
-    typealias Actions = RedCat.Actions.PossibleCities
-    
     static let reducer = CitiesReducer()
     
-    struct CitiesReducer : ReducerWrapper {
+    struct CitiesReducer : ReducerProtocol {
         
-        let body = prefixReducer
-            .compose(with: maxCountReducer)
-            .compose(with: valuesRequestReducer)
-            .compose(with: valuesResponseReducer)
+        func apply(_ action: AppAction.PossibleCities,
+                   to state: inout PossibleCities) {
+            switch action {
+            case .getPossibleCitiesCount(prefix: let prefix):
+                getPossibleCitiesCount(prefix: prefix, in: &state)
+            case .getPossibleCities(requestedIndex: let requestedIndex):
+                getPossibleCities(requestedIndex: requestedIndex, in: &state)
+            case .setPossibleCitiesCount(prefix: let prefix, count: let count):
+                setPossibleCitiesCount(prefix: prefix, count: count, in: &state)
+            case .setPossibleCities(prefix: let prefix, values: let values):
+                setPossibleCities(prefix: prefix, values: values, in: &state)
+            }
+        }
+        
+        func getPossibleCitiesCount(prefix: String, in state: inout PossibleCities) {
+            guard prefix != state.prefix else {
+                state.requestState = .resolved(response: Cities(list: [.resolved(response: state.prefix)]))
+                return
+            }
+            state.prefix = prefix
+            state.requestState = .requested(request: prefix)
+        }
+        
+        func getPossibleCities(requestedIndex: Int, in state: inout PossibleCities) {
+            guard
+                case .resolved(var cities) = state.requestState,
+                cities.list.indices.contains(requestedIndex),
+                case .empty = cities.list[requestedIndex] else {
+                return
+            }
+            state.requestState = .empty
+            cities.list[requestedIndex] = .requested(request: SingleCityRequest(index: requestedIndex,
+                                                                                prefix: state.prefix))
+            state.requestState = .resolved(response: cities)
+        }
+        
+        func setPossibleCitiesCount(prefix: String, count: Result<Int, NSError>, in state: inout PossibleCities) {
+            guard
+                case .requested = state.requestState,
+                prefix == state.prefix else {
+                return
+            }
+            switch count {
+            case .success(let count):
+                state.requestState = .resolved(response: Cities(list: Array(repeating: .empty, count: count)))
+            case .failure(let error):
+                state.requestState = .failed(reason: error)
+            }
+        }
+        
+        func setPossibleCities(prefix: String,
+                               values: [(index: Int, name: Result<String, NSError>)],
+                               in state: inout PossibleCities) {
+            guard
+                state.prefix == prefix,
+                case .resolved(var cities) = state.requestState else {
+                return
+            }
+            state.requestState = .empty
+            for (idx, name) in values {
+                guard cities.list.indices.contains(idx) else {continue}
+                cities.list[idx].finalize(from: name)
+            }
+            state.requestState = .resolved(response: cities)
+            
+        }
         
     }
     
-    static let prefixReducer = Reducer {
-        (action: Actions.GetPossibleCitiesCount, state: inout PossibleCities) in
-        guard action.prefix != state.prefix else {
-            state.requestState = .resolved(response: Cities(list: [.resolved(response: state.prefix)]))
-            return
-        }
-        state.prefix = action.prefix
-        state.requestState = .requested(request: action.prefix)
-    }
-    
-    static let maxCountReducer = Reducer {
-        (action: Actions.SetPossibleCitiesCount, state: inout PossibleCities) in
-        guard
-            case .requested = state.requestState,
-            action.prefix == state.prefix else {
-            return
-        }
-        switch action.count {
-        case .success(let count):
-            state.requestState = .resolved(response: Cities(list: Array(repeating: .empty, count: count)))
-        case .failure(let error):
-            state.requestState = .failed(reason: error)
-        }
-    }
-    
-    static let valuesRequestReducer = Reducer {
-        (action: Actions.GetPossibleCities, state: inout PossibleCities) in
-        guard
-            case .resolved(var cities) = state.requestState,
-            cities.list.indices.contains(action.requestedIndex),
-            case .empty = cities.list[action.requestedIndex] else {
-            return
-        }
-        state.requestState = .empty
-        cities.list[action.requestedIndex] = .requested(request: SingleCityRequest(index: action.requestedIndex,
-                                                                                   prefix: state.prefix))
-        state.requestState = .resolved(response: cities)
-    }
-    
-    static let valuesResponseReducer = Reducer {
-        (action: Actions.SetPossibleCities, state: inout PossibleCities) in
-        guard
-            state.prefix == action.prefix,
-            case .resolved(var cities) = state.requestState else {
-            return
-        }
-        state.requestState = .empty
-        for (idx, name) in action.values {
-            guard cities.list.indices.contains(idx) else {continue}
-            cities.list[idx].finalize(from: name)
-        }
-        state.requestState = .resolved(response: cities)
-    }
     
 }

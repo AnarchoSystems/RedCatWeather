@@ -11,7 +11,7 @@ import RedCat
 
 enum ForecastRequestHandler : Config {
     static func value(given: Dependencies) -> ForecastRequestResolver {
-        if given.debug {
+        if given.nativeValues.debug {
             return MockForecastResolver(delay: given.debugDelay)
         }
         else {
@@ -37,9 +37,9 @@ extension Dependencies {
 }
 
 
-class ForecastRequestService : DetailService<AppState, Forecast> {
+class ForecastRequestService : DetailService<AppState, Forecast, AppAction> {
     
-    override func onUpdate(newValue: Forecast, store: Store<AppState>, environment: Dependencies) {
+    override func onUpdate(newValue: Forecast, store: Store<AppState, AppAction>, environment: Dependencies) {
         guard case .requested(let request) = newValue.requestState else {
             return
         }
@@ -56,13 +56,14 @@ class ForecastRequestService : DetailService<AppState, Forecast> {
                     value == newValue else {
                     return
                 }
-                store.send(Actions.Forecast.RespondWithForecast(city: value.city, payload: response))
+                store.send(.forecast(action: .respondWithForecast(city: value.city, payload: response)))
             }
             
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {[weak store] in
             guard !answered else {return}
-            store?.send(Actions.Error.SetError(error: environment.slowInternetWarning.makeNSError()))
+            store?.send(.error(action: .setError(error: environment.slowInternetWarning.makeNSError(),
+                                               isSlowInternetError: true)))
         }
     }
     

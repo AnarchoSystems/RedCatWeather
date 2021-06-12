@@ -9,59 +9,46 @@ import Foundation
 import RedCat
 
 
-extension Actions {
+enum AppAction : SequentiallyComposable {
     
-    enum Forecast {
-        
-        struct ShowForecastForCity : PropertyChange {
-            var oldValue : String
-            var newValue : String
-        }
-        
-        struct ShowForecastType : PropertyChange {
-            var oldValue : ForecastType
-            var newValue : ForecastType
-        }
-        
-        struct RespondWithForecast : ActionProtocol {
-            let city : String
-            let payload : Result<ResolvedForecast, NSError>
-        }
-        
+    case appInit
+    case forecast(action: Forecast)
+    case error(action: Error)
+    case possibleCities(action: PossibleCities)
+    case showForecastScreen
+    case shutdown
+    
+    static func showForecastForCity(oldValue: String, newValue: String) -> ActionGroup<Self> {
+        AppAction.forecast(action: .showForecastForCity(oldValue: oldValue, newValue: newValue))
+            .then(showForecastScreen)
     }
+    
+}
+
+extension AppAction {
     
     enum PossibleCities {
         
-        typealias ShowForecastForCity = Forecast.ShowForecastForCity
-        
-        struct GetPossibleCitiesCount : ActionProtocol, Equatable {
-            let prefix : String
-        }
-        
-        struct GetPossibleCities : ActionProtocol, Equatable {
-            let requestedIndex : Int
-        }
-        
-        struct SetPossibleCitiesCount : ActionProtocol {
-            let prefix : String
-            let count : Result<Int, NSError>
-        }
-        
-        struct SetPossibleCities : ActionProtocol {
-            let prefix : String
-            let values : [(index: Int, name: Result<String, NSError>)]
-        }
+        case getPossibleCitiesCount(prefix: String)
+        case getPossibleCities(requestedIndex: Int)
+        case setPossibleCitiesCount(prefix: String, count: Result<Int, NSError>)
+        case setPossibleCities(prefix: String, values: [(index: Int, name: Result<String, NSError>)])
         
     }
     
     enum Error {
         
-        struct SetError : ActionProtocol {
-            let error : NSError
-        }
-        
-        struct DismissError : ActionProtocol {}
+        case setError(error: NSError, isSlowInternetError: Bool)
+        case dismissError
         
     }
     
+    enum Forecast {
+        
+        case showForecastForCity(oldValue: String, newValue: String)
+        case showForecastType(oldValue: ForecastType, newValue: ForecastType)
+        case respondWithForecast(city: String, payload: Result<ResolvedForecast, NSError>)
+        
+    }
+
 }

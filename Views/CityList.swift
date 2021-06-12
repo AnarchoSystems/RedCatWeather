@@ -12,9 +12,7 @@ import RedCat
 
 struct CityList : View {
     
-    typealias Actions = RedCat.Actions.PossibleCities
-    
-    @EnvironmentObject var store : CombineStore<AppState>
+    @EnvironmentObject var store : CombineStore<AppState, AppAction>
     
     var possibleCities : PossibleCities {
         store.state.possibleCities
@@ -65,7 +63,7 @@ struct CityList : View {
         switch city {
         case .empty:
             Spacer().onAppear {
-                store.send(Actions.GetPossibleCities(requestedIndex: index))
+                store.send(.possibleCities(action: .getPossibleCities(requestedIndex: index)))
             }
         case .requested:
             HStack {
@@ -86,7 +84,7 @@ struct CityList : View {
     }
     
     func selectCity(_ city: String) {
-        store.send(Actions.ShowForecastForCity(oldValue: store.state.currentForecast.city,
+        store.send(AppAction.showForecastForCity(oldValue: store.state.currentForecast.city,
                                     newValue: city))
     }
     
@@ -99,7 +97,7 @@ struct CityListPreview : PreviewProvider {
         CityList().environmentObject(store)
     }
     
-    static var store : CombineStore<AppState> {
+    static var store : CombineStore<AppState, AppAction> {
         AppState.makeStore {state in
             state.possibleCities = PossibleCities(prefix: "B",
                                                   requestState: .resolved(response: cities))

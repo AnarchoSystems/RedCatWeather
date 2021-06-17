@@ -8,14 +8,21 @@
 import RedCat
 
 
-final class AppEventService : Service<AppState, AppAction> {
+final class AppEventService : DetailService<AppState, Dummy, AppAction> {
     
-    override func onAppInit(store: Store<AppState, AppAction>, environment: Dependencies) {
+    init() {
+        super.init {_ in Dummy()}
+    }
+    
+    override func onAppInit() {
         store.send(.appInit)
     }
     
-    override func onShutdown(store: Store<AppState, AppAction>, environment: Dependencies) {
+    override func onShutdown() {
         store.send(.shutdown)
     }
     
 }
+
+// ok, we *do* need a way to subclass Service without subclassing DetailService
+struct Dummy : Equatable {}

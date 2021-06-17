@@ -36,7 +36,10 @@ extension Dependencies {
 
 class CityRequestService : DetailService<AppState, PossibleCities, AppAction> {
     
-    override func onUpdate(newValue: PossibleCities, store: Store<AppState, AppAction>, environment: Dependencies) {
+    @Injected(\.cityRequestHandler) var requestHandler
+    @Injected(\.slowInternetWarning) var slowInternetWarning
+    
+    override func onUpdate(newValue: PossibleCities) {
         
         var answered = false
         
@@ -48,24 +51,24 @@ class CityRequestService : DetailService<AppState, PossibleCities, AppAction> {
         case .requested(let request):
             requestCityCount(prefix: request,
                              store: store,
-                             handler: environment.cityRequestHandler,
+                             handler: requestHandler,
                              then: {answered = true})
             
         case .resolved(let list):
-            let requests = requestsToMake(oldList: oldValue?.values ?? [],
+            let requests = requestsToMake(oldList: oldValue.values,
                                           newList: list.list)
             
             requestCities(requests,
                           prefix: newValue.prefix,
                           store: store,
-                          handler: environment.cityRequestHandler,
+                          handler: requestHandler,
                           then: {answered = true})
             
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {[weak store] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
             guard !answered else {return}
-            store?.send(.error(action: .setError(error: environment.slowInternetWarning.makeNSError(),
+            self.store.send(.error(action: .setError(error: self.slowInternetWarning.makeNSError(),
                                                  isSlowInternetError: true)))
         }
         
@@ -73,13 +76,13 @@ class CityRequestService : DetailService<AppState, PossibleCities, AppAction> {
     
     private func requestCities(_ indices: [Int],
                                prefix: String,
-                               store: Store<AppState, AppAction>,
+                               store: StoreStub<AppState, AppAction>,
                                handler: CityRequestResolver,
                                then: @escaping () -> Void) {
         
-        handler.getPossibleCities(withPrefix: prefix, indices: indices) {[weak store] response in
+        handler.getPossibleCities(withPrefix: prefix, indices: indices) {response in
             DispatchQueue.main.async {
-                store?.send(.possibleCities(action: .setPossibleCities(prefix: prefix,
+                store.send(.possibleCities(action: .setPossibleCities(prefix: prefix,
                                                                      values: Array(zip(indices, response)))))
                 then()
             }
@@ -88,15 +91,14 @@ class CityRequestService : DetailService<AppState, PossibleCities, AppAction> {
     }
     
     private func requestCityCount(prefix: String,
-                                  store: Store<AppState, AppAction>,
+                                  store: StoreStub<AppState, AppAction>,
                                   handler: CityRequestResolver,
                                   then: @escaping () -> Void) {
         
         handler.getNumberOfPossibleCities(withPrefix: prefix) {response in
-            DispatchQueue.main.async {[weak store, weak self] in
+            DispatchQueue.main.async {[weak self] in
                 guard
-                    let detail = self?.detail,
-                    let store = store else {
+                    let detail = self?.detail else {
                     return
                 }
                 let currentValue = detail(store.state)

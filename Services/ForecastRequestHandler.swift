@@ -39,20 +39,22 @@ extension Dependencies {
 
 class ForecastRequestService : DetailService<AppState, Forecast, AppAction> {
     
-    override func onUpdate(newValue: Forecast, store: Store<AppState, AppAction>, environment: Dependencies) {
+    @Injected(\.forecastRequestHandler) var requestHandler
+    @Injected(\.slowInternetWarning) var slowInternetWarning
+    
+    override func onUpdate(newValue: Forecast) {
         guard case .requested(let request) = newValue.requestState else {
             return
         }
         
         var answered = false
         
-        environment.forecastRequestHandler.forecast(for: newValue.city,
-                                                    type: request) {[weak store, weak self] response in
+        requestHandler.forecast(for: newValue.city,
+                                                    type: request) {[self] response in
             DispatchQueue.main.async {
                 answered = true
+                let value = detail(store.state)
                 guard
-                    let store = store,
-                    let value = self?.detail(store.state),
                     value == newValue else {
                     return
                 }
@@ -60,9 +62,9 @@ class ForecastRequestService : DetailService<AppState, Forecast, AppAction> {
             }
             
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {[weak store] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
             guard !answered else {return}
-            store?.send(.error(action: .setError(error: environment.slowInternetWarning.makeNSError(),
+            self.store.send(.error(action: .setError(error: self.slowInternetWarning.makeNSError(),
                                                isSlowInternetError: true)))
         }
     }

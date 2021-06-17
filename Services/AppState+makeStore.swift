@@ -13,12 +13,12 @@ extension AppState {
     
     static func makeStore(configure: (Dependencies) -> AppState = configureDefaultState)
     -> CombineStore<AppState, AppAction> {
-        Store.combineStore(reducer: reducer,
-                           environment: dependencies,
-                           services: [CityRequestService(detail: \.possibleCities),
-                                      ForecastRequestService(detail: \.currentForecast),
-                                      AppEventService()],
-                           configure: configure)
+        Store(erasing: reducer,
+              environment: dependencies,
+              services: [CityRequestService(detail: \.possibleCities),
+                         ForecastRequestService(detail: \.currentForecast),
+                         AppEventService()],
+              configure: configure)
     }
     
     // for previews / debug
@@ -43,7 +43,7 @@ extension AppState {
     
     
     static let dependencies = Dependencies {
-        Bind(\.debugDelay, to: .stoneage)
+        Bind(\.debugDelay, to: .short)
     }
     
 }

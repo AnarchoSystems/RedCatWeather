@@ -43,7 +43,7 @@ extension AppState {
     
     
     static let dependencies = Dependencies {
-        Bind(\.debugDelay, to: .short)
+        Bind(\.debugDelay, to: .stoneage)
     }
     
 }

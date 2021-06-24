@@ -15,8 +15,8 @@ extension AppState {
     -> CombineStore<AppState, AppAction> {
         Store(erasing: reducer,
               environment: dependencies,
-              services: [CityRequestService(detail: \.possibleCities),
-                         ForecastRequestService(detail: \.currentForecast),
+              services: [CityRequestService(),
+                         ForecastRequestService(),
                          AppEventService()],
               configure: configure)
     }

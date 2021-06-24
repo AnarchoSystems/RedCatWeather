@@ -42,7 +42,11 @@ class ForecastRequestService : DetailService<AppState, Forecast, AppAction> {
     @Injected(\.forecastRequestHandler) var requestHandler
     @Injected(\.slowInternetWarning) var slowInternetWarning
     
-    override func onUpdate(newValue: Forecast) {
+    func extractDetail(from state: AppState) -> Forecast {
+        state.currentForecast
+    }
+    
+    func onUpdate(newValue: Forecast) {
         guard case .requested(let request) = newValue.requestState else {
             return
         }
@@ -53,7 +57,7 @@ class ForecastRequestService : DetailService<AppState, Forecast, AppAction> {
                                                     type: request) {[self] response in
             DispatchQueue.main.async {
                 answered = true
-                let value = detail(store.state)
+                let value = self.extractDetail(from: store.state)
                 guard
                     value == newValue else {
                     return

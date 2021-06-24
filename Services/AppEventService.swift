@@ -10,11 +10,11 @@ import RedCat
 
 final class AppEventService : RedCat.AppEventService<AppState, AppAction> {
     
-    override func onAppInit() {
+    func onAppInit() {
         store.send(.appInit)
     }
     
-    override func onShutdown() {
+    func onShutdown() {
         store.send(.shutdown)
     }
     

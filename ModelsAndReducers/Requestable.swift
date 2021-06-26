@@ -18,12 +18,17 @@ enum Requestable<Request : Equatable, Response : Equatable> : Equatable, Emptyab
     case empty
     
     mutating func finalize(from response: Result<Response, NSError>) {
+        
         switch response {
+        
         case .success(let value):
             self = .resolved(response: value)
+            
         case .failure(let error):
             self = .failed(reason: error)
+            
         }
+        
     }
     
 }

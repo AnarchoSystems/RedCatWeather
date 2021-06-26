@@ -10,14 +10,18 @@ import RedCat
 
 
 enum CityRequestHandler : Config {
+    
     static func value(given: Dependencies) -> CityRequestResolver {
+        
         if given.nativeValues.debug {
             return MockCityResolver(delay: given.debugDelay).cached()
         }
         else {
             fatalError("Not implemented")
         }
+        
     }
+    
 }
 
 extension Dependencies {
@@ -96,37 +100,50 @@ class CityRequestService : DetailService<AppState, PossibleCities, AppAction> {
                                   then: @escaping () -> Void) {
         
         handler.getNumberOfPossibleCities(withPrefix: prefix) {response in
+            
             DispatchQueue.main.async {[self] in
+                
                 let currentValue = extractDetail(from: store.state)
                 store.send(.possibleCities(action: .setPossibleCitiesCount(prefix: prefix, count: response)))
+                
                 guard case .success = response else {
                     return
                 }
+                
                 let requestsToMake = currentValue.values.enumerated().compactMap {(idx, value) -> Int? in
                     guard case .requested = value else {
                         return nil
                     }
                     return idx
                 }
+                
                 self.requestCities(requestsToMake,
                                     prefix: prefix,
                                     handler: handler,
                                     then: then)
             }
+            
         }
+        
     }
     
     private func requestsToMake(oldList: [RequestableCity],
                                 newList: [RequestableCity]) -> [Int] {
+        
             let diff = newList.difference(from: oldList)
+        
             return diff.insertions.compactMap {value in
+                
                 guard
                     case .insert(let offset, let element, _) = value,
                     case .requested = element else {
                     return nil
                 }
+                
                 return offset
+                
             }
+        
     }
     
 }

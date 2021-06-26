@@ -50,14 +50,19 @@ extension WeekForecast {
 extension ResolvedForecast {
     
     var rainRange : RainRange {
+        
         switch self {
+        
         case .hour(let hour):
             return hour.rainRange
+            
         case .day(let day):
             return day.rainRange
+            
         case .week(let week):
             return week.rainRange
         }
+        
     }
     
 }

@@ -32,31 +32,43 @@ extension Forecast {
         
         func apply(_ action: AppAction.Forecast,
                    to state: inout Forecast) {
+            
             switch action {
             case .showForecastType(oldValue: _, newValue: let newValue):
                 showForecastType(newValue: newValue, in: &state)
+                
             case .respondWithForecast(city: let city, payload: let payload):
                 respondWithForecast(city: city, payload: payload, in: &state)
+                
             case .showForecastForCity(oldValue: _, newValue: let newValue):
                 showForecastForCity(newValue: newValue, in: &state)
+                
             }
+            
         }
         
         func respondWithForecast(city: String, payload: Result<ResolvedForecast, NSError>, in state: inout Forecast) {
+            
             state.requestState.finalize(from: payload)
+            
             if case .resolved(let response) = state.requestState {
                 state.lastResult = response
             }
+            
         }
         
         func showForecastType(newValue: ForecastType, in state: inout Forecast) {
+            
             state.rawForecastType = newValue
             state.requestState = .requested(request: newValue)
+            
         }
         
         func showForecastForCity(newValue: String, in state: inout Forecast) {
+            
             state.city = newValue
             state.requestState = .requested(request: state.rawForecastType)
+            
         }
         
     }
@@ -85,11 +97,13 @@ struct DayForecast : Hashable {
     let hourly : [HourForecast]
     
     var average : HourForecast {
+        
         guard
             let first = hourly.first,
             hourly.lazy.map(\.temperatureUnit).allSatisfy({$0 == first.temperatureUnit}) else {
-            fatalError()
+            fatalError("Conversion not implemented")
         }
+        
         return hourly.reduce(HourForecast(hour: nil,
                                           rainProbability: 0,
                                           temperature: 0,
@@ -99,6 +113,7 @@ struct DayForecast : Hashable {
                          rainProbability: aggregate.rainProbability + (next.rainProbability) / Double(hourly.count),
                          temperature: aggregate.temperature + (next.temperature) / Double(hourly.count),
                          temperatureUnit: first.temperatureUnit)
+            
         }
     }
     

@@ -49,22 +49,31 @@ public struct AppState {
     struct AppReducer : DispatchReducerProtocol {
         
         func dispatch(_ action: AppAction) -> VoidReducer<AppState> {
+            
             switch action {
+            
             case .appInit:
                 return initReducer.asVoidReducer()
+                
             case .forecast(let action):
                 return Forecast.reducer.bind(to: \.currentForecast).send(action)
+                
             case .error(let action):
                 return errorReducer.send(action)
+                
             case .possibleCities(let action):
                 return goToCitiesMenuReducer.send(action)
                     .compose(with: PossibleCities.reducer.bind(to: \.possibleCities).send(action))
                     .asVoidReducer()
+                
             case .showForecastScreen:
                 return dismissCityRequestOnShowCity.asVoidReducer()
+                
             case .shutdown:
                 return deinitReducer.asVoidReducer()
+                
             }
+            
         }
         
     }

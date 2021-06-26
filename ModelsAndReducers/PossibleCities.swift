@@ -12,9 +12,11 @@ import CasePaths
 
 
 extension Identified : Equatable where T : Equatable {
+    
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id && lhs.value == rhs.value
     }
+    
 }
 
 struct SingleCityRequest : Hashable {
@@ -48,16 +50,23 @@ struct PossibleCities : Equatable {
         
         func apply(_ action: AppAction.PossibleCities,
                    to state: inout PossibleCities) {
+            
             switch action {
+            
             case .getPossibleCitiesCount(prefix: let prefix):
                 getPossibleCitiesCount(prefix: prefix, in: &state)
+                
             case .getPossibleCities(requestedIndex: let requestedIndex):
                 getPossibleCities(requestedIndex: requestedIndex, in: &state)
+                
             case .setPossibleCitiesCount(prefix: let prefix, count: let count):
                 setPossibleCitiesCount(prefix: prefix, count: count, in: &state)
+                
             case .setPossibleCities(prefix: let prefix, values: let values):
                 setPossibleCities(prefix: prefix, values: values, in: &state)
+                
             }
+            
         }
         
         func getPossibleCitiesCount(prefix: String, in state: inout PossibleCities) {

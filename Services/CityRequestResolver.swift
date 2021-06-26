@@ -26,14 +26,17 @@ struct MockCityResolver : CityRequestResolver {
     
     func getNumberOfPossibleCities(withPrefix prefix: String,
                                    response: @escaping (Result<Int, NSError>) -> Void) {
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(.random(in: delay.delayMs))) {
             response(.success(cities.filter {$0.hasPrefix(prefix)}.count))
         }
+        
     }
     
     func getPossibleCities(withPrefix prefix: String,
                            indices: [Int],
                            response: @escaping ([Result<String, NSError>]) -> Void) {
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(.random(in: delay.delayMs))) {
             let validCities = cities.filter {$0.hasPrefix(prefix)}
             response(indices.map {idx in
@@ -42,6 +45,7 @@ struct MockCityResolver : CityRequestResolver {
                     .failure(.cityNotFound())
             })
         }
+        
     }
     
     
@@ -75,6 +79,7 @@ class CachedCityResolver : CityRequestResolver {
     }
     
     func getNumberOfPossibleCities(withPrefix prefix: String, response: @escaping (Result<Int, NSError>) -> Void) {
+        
         queue.async {
             if let count = self.countFromPrefix(prefix) {
                 response(.success(count))
@@ -94,11 +99,13 @@ class CachedCityResolver : CityRequestResolver {
                 }
             }
         }
+        
     }
     
     func getPossibleCities(withPrefix prefix: String,
                            indices: [Int],
                            response: @escaping ([Result<String, NSError>]) -> Void) {
+        
         queue.async {
             if let result = self.tryRespondFromCache(withPrefix: prefix, indices: indices) {
                 response(result)
@@ -129,6 +136,7 @@ class CachedCityResolver : CityRequestResolver {
                 self.wrapped.getPossibleCities(withPrefix: prefix, indices: indices, response: response)
             }
         }
+        
     }
     
     func countFromPrefix(_ prefix: String) -> Int? {
@@ -180,9 +188,11 @@ class CachedCityResolver : CityRequestResolver {
         else {
             return nil
         }
+        
     }
     
     func updatePrefixDict(prefix: String, values: [Result<String, NSError>]) {
+        
         queue.async {
             let now = Date()
             self.prefixDict[prefix].modify(default: (values, now)) {
@@ -204,6 +214,7 @@ class CachedCityResolver : CityRequestResolver {
                                              uniquingKeysWith: {print("Something strange is going on..."); return $1})
             }
         }
+        
     }
     
 }
